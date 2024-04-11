@@ -19,7 +19,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        val mediaPlayer = MediaPlayer.create(this, R.raw.digital_watch_alarm_long)
+        val mediaPlayerWin = MediaPlayer.create(this, R.raw.digital_watch_alarm_long)
+        val mediaPlayerPress = MediaPlayer.create(this, R.raw.beep_short)
         val scoreButton = findViewById<Button>(R.id.scoreButton)
         val stealButton = findViewById<Button>(R.id.stealButton)
         val resetButton = findViewById<Button>(R.id.resetButton)
@@ -44,21 +45,23 @@ class MainActivity : AppCompatActivity() {
             score++
             scoreView.text = score.toString()
             isWithinLimits()
-            if(score == 15) mediaPlayer.start()
+            mediaPlayerPress.start()
+            if(score == 15) mediaPlayerWin.start()
             Log.i("SCORE", "Score:$score")
         }
         stealButton.setOnClickListener {
             score--
             scoreView.text = score.toString()
             isWithinLimits()
-            if(score != 15) mediaPlayer.stop()
+            mediaPlayerPress.start()
+            if(score != 15) mediaPlayerWin.stop()
             Log.i("STEAL", "Steal:$score")
         }
         resetButton.setOnClickListener {
             score = 0
             scoreView.text = score.toString()
             isWithinLimits()
-            mediaPlayer.stop()
+            mediaPlayerPress.start()
             Log.i("RESET", "Reset:$score")
         }
     }
