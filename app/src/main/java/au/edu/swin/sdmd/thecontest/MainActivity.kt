@@ -17,8 +17,6 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-
-
         val mediaPlayerWin = MediaPlayer.create(this, R.raw.digital_watch_alarm_long)
         val mediaPlayerPress = MediaPlayer.create(this, R.raw.beep_short)
         val scoreButton = findViewById<Button>(R.id.scoreButton)
